@@ -1,5 +1,7 @@
 import { HandlerContext } from "$fresh/server.ts";
 
+// import { getIP } from "https://deno.land/x/get_ip/mod.ts";
+
 // Jokes courtesy of https://punsandoneliners.com/randomness/programmer-jokes/
 const JOKES = [
   "Why do Java developers often wear glasses? They can't C#.",
@@ -17,5 +19,29 @@ const JOKES = [
 export const handler = (_req: Request, _ctx: HandlerContext): Response => {
   const randomIndex = Math.floor(Math.random() * JOKES.length);
   const body = JOKES[randomIndex];
+  console.log("lautaros test",_req)
   return new Response(body);
 };
+
+// const getMyIP = async () => {
+//   console.log(`Your public IP is ${await getIP({ipv6: true})}`);
+// }
+
+// getMyIP();
+
+// interface State {
+//   ip: string;
+// }
+// import { MiddlewareHandlerContext } from "$fresh/server.ts";
+
+// export async function handler(
+//   req: Request,
+//   ctx: MiddlewareHandlerContext<State>,
+// ) {
+//   const ip = (ctx.remoteAddr as Deno.NetAddr).hostname;
+//   ctx.state.ip = ip;
+//   const resp = await ctx.next();
+//   console.debug(`Addr: ${(ctx.remoteAddr as Deno.NetAddr).hostname}, ${(ctx.remoteAddr as Deno.NetAddr).port}`);
+//   return resp;
+// }
+
